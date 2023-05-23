@@ -2,42 +2,38 @@ from tkinter import *
 from tkinter import ttk
 import random
 from sıralamalar import Sortings
+import tkinter as tk
 
 sortings = Sortings()
 
 root = Tk()
 root.title('Sorting Algorithm Visualiser')
-# Arayüzü tam ekran yapma
-root.attributes('-fullscreen', True)
-
+root.geometry('900x600')
 root.config(bg='#303030')  # Arka plan rengi değiştirildi
 
+UI_frame = tk.Frame(root)
+UI_frame.grid()
 # Variables
 selected_alg = StringVar()
 data = []
 graph_type = StringVar(value='scatter')
 
-# Tam ekran modunda çalışırken çıkış yapma
-def exitFullscreen(event):
-    root.attributes('-fullscreen', False)
-
-root.bind('<Escape>', exitFullscreen)
-
-
 # Function
 def drawData(data, colorArray):
     canvas.delete("all")
-    c_height = 800  # Yeni yükseklik değeri
-    c_width = 800  # Yeni genişlik değeri
+    c_height = 380
+    c_width = 600
     x_width = c_width / (len(data) + 1)
     offset = 30
     spacing = 10
     normalizedData = [i / max(data) for i in data]
-
+    
     if graph_type.get() == 'scatter':
         for i, height in enumerate(normalizedData):
+            # Top left
             x0 = i * x_width + offset + spacing
-            y0 = c_height - height * (c_height - offset - spacing)  # Yeni yükseklik değerine göre hesaplama
+            y0 = c_height - height * 340
+            # Bottom right
             x1 = (i + 1) * x_width + offset
             y1 = c_height
 
@@ -46,8 +42,10 @@ def drawData(data, colorArray):
     elif graph_type.get() == 'bar':
         bar_width = x_width / 2
         for i, height in enumerate(normalizedData):
+            # Top left
             x0 = i * x_width + offset + spacing
-            y0 = c_height - height * (c_height - offset - spacing)  # Yeni yükseklik değerine göre hesaplama
+            y0 = c_height - height * 340
+            # Bottom right
             x1 = (i + 1) * x_width + offset
             y1 = c_height
 
@@ -55,18 +53,23 @@ def drawData(data, colorArray):
             canvas.create_text(x0 + bar_width, y0 - 15, anchor=N, text=str(data[i]), fill='white', font='Arial 8')
     elif graph_type.get() == 'stem':
         for i, height in enumerate(normalizedData):
+            # Top left
             x = i * x_width + offset + spacing
-            y = c_height - height * (c_height - offset - spacing)  # Yeni yükseklik değerine göre hesaplama
+            y = c_height - height * 340
 
             canvas.create_line(x, c_height, x, y, fill=colorArray[i], width=2)
             canvas.create_oval(x - 2, y - 2, x + 2, y + 2, fill=colorArray[i], outline="")
 
     root.update_idletasks()
 
-
+def stopAlgorithm():
+    global stop
+    stop = True
 def generate():
     global data
-
+    global stop
+    
+    stop = False
     minVal = int(minEntry.get())
     maxVal = int(maxEntry.get())
     size = int(sizeEntry.get())
@@ -100,23 +103,17 @@ def startAlgorithm():
         sortings.insertion_sort(data, drawData, speedScale.get())
 
     drawData(data, ['#4CAF50' for x in range(len(data))])
-    
-def stopAnimation():
-    global animation_running
-    animation_running = False
+    if stop:
+        return
+    root.after(10, startAlgorithm)
+        
 
-
-def resetAlgorithm():
-    global data
-   
-    data = []  # Verileri boşaltarak sıralama işlemini durdurun
-    drawData(data, ['#004080' for x in range(len(data))])  # Veriyi temizleyin ve görselleştirin
 
 # Frame / Base Layout
-UI_frame = Frame(root, width=1200, height=800, bg='#303030')  # Arka plan rengi değiştirildi
+UI_frame = Frame(root, width=300, height=600, bg='#303030')  # Arka plan rengi değiştirildi
 UI_frame.grid(row=0, column=0, padx=10, pady=10, sticky="n")
 
-canvas = Canvas(root, width=1200, height=800, bg='#303030')  # Arka plan rengi değiştirildi
+canvas = Canvas(root, width=600, height=600, bg='#303030')  # Arka plan rengi değiştirildi
 canvas.grid(row=0, column=1, padx=10, pady=10)
 
 # User Interface Area
@@ -151,7 +148,7 @@ maxEntry = Scale(data_frame, from_=10, to=100, resolution=1, orient=HORIZONTAL, 
 maxEntry.pack(padx=10, pady=5)
 
 generateButton = Button(data_frame, text="Generate", command=generate, bg='#008080', fg='white', font='Arial 12', relief=RAISED)
-generateButton.pack(padx=20, pady=30)
+generateButton.pack(padx=10, pady=10)
 
 # Graph Type Selection
 graph_frame = LabelFrame(UI_frame, text="Graph Type", bg='#303030', fg='white', font='Arial 12')
@@ -168,12 +165,10 @@ stemRadio.pack(anchor=W, padx=10, pady=5)
 
 # Start Button
 startButton = Button(UI_frame, text="Start", command=startAlgorithm, bg='#008080', fg='white', font='Arial 12', relief=RAISED)
-startButton.pack(fill=BOTH, padx=5, pady=5)
+startButton.pack(fill=BOTH, padx=10, pady=10)
 
-
-
-resetButton = Button(UI_frame, text="Reset", command=resetAlgorithm, bg='#66CDAA', fg='white', font='Arial 12', relief=RAISED)
-resetButton.pack(fill=BOTH, padx=5, pady=5)
+stop_button = Button(UI_frame, text="Stop", command=stopAlgorithm, bg='#a3a3c2', fg='white', font='Arial 12')
+stop_button.pack(side=LEFT, padx=5, pady=5)
 
 
 
