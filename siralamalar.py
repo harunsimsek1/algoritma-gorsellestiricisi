@@ -20,7 +20,7 @@ class Sortings:
             data[j + 1] = key
             drawData(data, ['green' if x == j + 1 else 'white' for x in range(len(data))])
             time.sleep(timeTick)
-        self.complete_sorting()  # Sıralama tamamlandığında sonuçları göster
+         # Sıralama tamamlandığında sonuçları göster
 
     def bubble_sort(self, data, drawData, timeTick):
         self.comparison_count = 0  # Karşılaştırma sayısını sıfırla
@@ -31,7 +31,7 @@ class Sortings:
                     data[j], data[j + 1] = data[j + 1], data[j]
                     drawData(data, ['green' if x == j or x == j + 1 else 'white' for x in range(len(data))])
                     time.sleep(timeTick)
-        self.complete_sorting()  # Sıralama tamamlandığında sonuçları göster
+         # Sıralama tamamlandığında sonuçları göster
 
     def selection_sort(self, data, drawData, timeTick):
         self.comparison_count = 0  # Karşılaştırma sayısını sıfırla
@@ -44,7 +44,7 @@ class Sortings:
             data[i], data[min_idx] = data[min_idx], data[i]
             drawData(data, ['green' if x == min_idx or x == i else 'red' for x in range(len(data))])
             time.sleep(timeTick)
-        self.complete_sorting()  # Sıralama tamamlandığında sonuçları göster
+          # Sıralama tamamlandığında sonuçları göster
 
     def partition(self, data, left, right, drawData, timeTick):
         border = left
@@ -83,7 +83,7 @@ class Sortings:
     def merge_sort(self, data, drawData, timeTick):
         self.comparison_count = 0  # Karşılaştırma sayısını sıfırla
         self.merge_sort_alg(data, 0, len(data) - 1, drawData, timeTick)
-        self.complete_sorting()  # Sıralama tamamlandığında sonuçları göster
+          # Sıralama tamamlandığında sonuçları göster
 
     def merge_sort_alg(self, data, left, right, drawData, timeTick):
         if left < right:
