@@ -16,23 +16,23 @@ ARAYÜZÜ ÖRNEK GÖRSELI
 
 ![1](https://github.com/harunsimsek1/algoritma-gorsellestiricisi/assets/72405540/35f36cc9-e88f-4bce-a136-b4610c493a83)
 
-                                 Şekil 1. Kullancı arayüzü Sıralama Algoritmaları Görselleştiricisi 
+                             Şekil 1. Kullancı arayüzü Sıralama Algoritmaları Görselleştiricisi 
 
 ## Sıralama Algoritmanın Baslangici
 
 ![2](https://github.com/harunsimsek1/algoritma-gorsellestiricisi/assets/72405540/7528e806-8a95-47e5-bab9-903b2038d5c8)
 
-                    Şekil 2. Seçtiğimiz Sıralama Algoritmanın Başlangıçı ve Karşılaştırma Sayısı göstermektedir
+               Şekil 2. Seçtiğimiz Sıralama Algoritmanın Başlangıçı ve Karşılaştırma Sayısı göstermektedir
 
 ## Sıralama Algoritmanın Çalıştırması 
 
 ![4](https://github.com/harunsimsek1/algoritma-gorsellestiricisi/assets/72405540/289abaa8-b763-4114-85fe-0bd81441212b)
 
-                             Şekil 3. Seçtiğimiz Sıralama Algoritmanın Karmaşık Analizi 
+                           Şekil 3. Seçtiğimiz Sıralama Algoritmanın Karmaşık Analizi 
 
 
 ## Sıralama Algoritmanın Sonucu Göstermesi
 
 ![3](https://github.com/harunsimsek1/algoritma-gorsellestiricisi/assets/72405540/e85198aa-dad5-4a76-9175-e604ccdc60e8)
 
-                          Şekil 4. Seçtiğimiz Algoritmanın Sonucu ve Grafik Tipi göstermektedir
+                         Şekil 4. Seçtiğimiz Algoritmanın Sonucu ve Grafik Tipi göstermektedir
