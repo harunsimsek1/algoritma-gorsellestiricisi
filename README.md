@@ -35,4 +35,4 @@ ARAYÜZÜ ÖRNEK GÖRSELI
 
 ![3](https://github.com/harunsimsek1/algoritma-gorsellestiricisi/assets/72405540/e85198aa-dad5-4a76-9175-e604ccdc60e8)
 
-                         Şekil 4. Seçtiğimiz Algoritmanın Sonucu ve Grafik Tipi göstermektedir
+                        Şekil 4. Seçtiğimiz Algoritmanın Sonucu ve Grafik Tipi göstermektedir
